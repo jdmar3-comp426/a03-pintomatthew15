@@ -8,7 +8,12 @@ import {variance} from "./data/stats_helpers.js";
  * prototype functions. Very useful
  */
 export function getSum(array) {
-
+    let sum = 0;
+    for (let i = 0; i < array.length; i++)
+    {
+        sum += array[i];
+    }
+    return sum;
 }
 
 
@@ -22,7 +27,27 @@ export function getSum(array) {
  * console.log(getMedian(array)); // 4.5
  */
 export function getMedian(array) {
-
+    //sort 
+    if (array.length%2 == 0) //if the size is even
+    {
+        for (let i = 0; i < array.length; i++)
+        {
+            if (i == array.length/2)
+            {
+                return (array[i]+array[i-1])/2;
+            }
+        }
+    }
+    else
+    {
+      for (let i = 0; i < array.length; i++)
+      {
+          if (i == Math.floor(array.length/2))
+          {
+              return array[i];
+          }
+      }
+    }
 }
 
 /**
@@ -45,6 +70,34 @@ export function getMedian(array) {
  }
  */
 export function getStatistics(array) {
+
+    let min = array[0];
+    let max = array[0];
+    let mean = 0;
+    for (let i = 0; i < array.length; i++)
+    {
+        if (array[i] > max)
+        {
+            max = array[i];
+        }
+        if (array[i] < min)
+        {
+            min = array[i];
+        }
+        mean += array[i];
+    }
+    mean = mean/array.length;
+
+    return {
+        length: array.length,
+        sum: getSum(array),
+        mean: mean,
+        median: getMedian(array),
+        min: min,
+        max: max,
+        variance: variance(array,mean),
+        standard_deviation: Math.sqrt((variance(array,mean))),
+    };
 
 }
 
