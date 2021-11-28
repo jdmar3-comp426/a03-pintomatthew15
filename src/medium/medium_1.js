@@ -32,7 +32,7 @@ export function getMedian(array) {
 
     let sortedArray = [...array].sort((x,y) => x-y);
 
-    return array.length % 2 !== 0 ? sortedArray[middle_Val] : (sortedArray[middle_Val-1] + sortedArray[mid]) /2;
+    return array.length % 2 !== 0 ? sortedArray[middle_Val] : (sortedArray[middle_Val-1] + sortedArray[middle_Val]) /2;
 }
 
 /**
