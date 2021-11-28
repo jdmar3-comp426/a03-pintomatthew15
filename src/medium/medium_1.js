@@ -28,26 +28,11 @@ export function getSum(array) {
  */
 export function getMedian(array) {
     //sort 
-    if (array.length%2 == 0) //if the size is even
-    {
-        for (let i = 0; i < array.length; i++)
-        {
-            if (i == array.length/2)
-            {
-                return (array[i]+array[i-1])/2;
-            }
-        }
-    }
-    else
-    {
-      for (let i = 0; i < array.length; i++)
-      {
-          if (i == Math.floor(array.length/2))
-          {
-              return array[i];
-          }
-      }
-    }
+    let middle_Val = Math.floor(array.length / 2);
+
+    let sortedArray = [...array].sort((x,y) => x-y);
+
+    return array.length % 2 !== 0 ? sortedArray[middle_Val] : (sortedArray[middle_Val-1] + sortedArray[mid]) /2;
 }
 
 /**
