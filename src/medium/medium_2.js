@@ -1,5 +1,5 @@
 import mpg_data from "./data/mpg_data.js";
-import {getStatistics} from "./medium_1.js";
+import {getStatistics, getSum} from "./medium_1.js";
 
 /*
 This section can be done by using the array prototype functions.
@@ -20,9 +20,9 @@ see under the methods section
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
 export const allCarStats = {
-    avgMpg: undefined,
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    avgMpg: {city: getStatistics(cityMpgArray).mean, highway: getStatistics(highwayMpgArray).mean},
+    allYearStats: getStatistics(yearArray),
+    ratioHybrids: hybridCount/mpg_data.length,
 };
 
 
